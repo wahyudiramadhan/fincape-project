@@ -7,6 +7,14 @@ A University of Waterloo Research Initiative in partnership with IPB University,
 
 ## Live Demo
 
+**[https://wahyudiramadhan.github.io/fincape-project/](https://wahyudiramadhan.github.io/fincape-project/)**
+
+> Hosted via GitHub Pages — auto-deploys on every push to `main`.
+
+---
+
+### Run Locally
+
 > Open `index.html` in your browser — no build step, no server required.
 
 ```bash
