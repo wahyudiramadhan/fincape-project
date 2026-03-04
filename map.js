@@ -96,28 +96,54 @@ mapData.forEach(d => {
 function openDetail(d) {
     currentDetail = d.id;
     gaEvent('map_marker_click', { location: d.id, province: d.province, type: d.type });
-    document.getElementById('tabProvinces').style.display = 'none';
-    document.getElementById('tabLegend').style.display = 'none';
-    const dp = document.getElementById('detailPanel');
-    dp.classList.add('show');
-    document.getElementById('detailImg').src = d.img;
-    document.getElementById('detailTitle').textContent = d.title;
-    document.getElementById('detailSub').textContent = d.sub;
-    document.getElementById('detailStats').innerHTML = d.stats.map(s =>
+
+    const isMobile = window.innerWidth <= 768;
+    const statsHtml = d.stats.map(s =>
         `<div class="ds-cell"><div class="ds-v">${s.v}</div><div class="ds-l">${s.l}</div></div>`
     ).join('');
-    document.getElementById('detailTags').innerHTML = d.tags.map(t => `<span class="dtag">${t}</span>`).join('');
-    // highlight province item
-    document.querySelectorAll('.province-item').forEach(p => p.classList.remove('active'));
-    document.getElementById('prov-' + d.province)?.classList.add('active');
-    // show sidebar tab
-    activateTab('provinces');
+    const tagsHtml = d.tags.map(t => `<span class="dtag">${t}</span>`).join('');
+
+    if (isMobile) {
+        // populate bottom sheet
+        document.getElementById('mdsImg').src = d.img;
+        document.getElementById('mdsTitle').textContent = d.title;
+        document.getElementById('mdsSub').textContent = d.sub;
+        document.getElementById('mdsStats').innerHTML = statsHtml;
+        document.getElementById('mdsTags').innerHTML = tagsHtml;
+        document.getElementById('mapDetailSheet').classList.add('open');
+        document.body.style.overflow = 'hidden';
+    } else {
+        // desktop sidebar
+        document.getElementById('tabProvinces').style.display = 'none';
+        document.getElementById('tabLegend').style.display = 'none';
+        const dp = document.getElementById('detailPanel');
+        dp.classList.add('show');
+        document.getElementById('detailImg').src = d.img;
+        document.getElementById('detailTitle').textContent = d.title;
+        document.getElementById('detailSub').textContent = d.sub;
+        document.getElementById('detailStats').innerHTML = statsHtml;
+        document.getElementById('detailTags').innerHTML = tagsHtml;
+        document.querySelectorAll('.province-item').forEach(p => p.classList.remove('active'));
+        document.getElementById('prov-' + d.province)?.classList.add('active');
+        activateTab('provinces');
+    }
     map.flyTo([d.lat, d.lng], 7, { duration: 1.2 });
 }
 
 function closeDetail() {
     document.getElementById('detailPanel').classList.remove('show');
     document.getElementById('tabProvinces').style.display = '';
+}
+
+function closeMobileDetail() {
+    document.getElementById('mapDetailSheet').classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+function toggleMobileLegend(btn) {
+    const legend = document.getElementById('mmcLegend');
+    const isOpen = legend.classList.toggle('open');
+    btn.classList.toggle('active', isOpen);
 }
 
 function focusProvince(p) {
@@ -131,9 +157,12 @@ function focusProvince(p) {
 
 function filterMarkers(tag, el) {
     document.querySelectorAll('.loc-chip').forEach(c => c.classList.remove('active'));
-    el.classList.add('active');
+    if (el) el.classList.add('active');
     const compChip = document.querySelector('.comp-chip.active');
     const comp = compChip ? compChip.textContent.trim().replace(/.*—\s*/,'').trim() : 'all';
+    // also sync mobile select if called from chip
+    const locSel = document.querySelector('.mfm-select[onchange*="filterMarkers"]');
+    if (locSel && el) locSel.value = tag;
     leafletMarkers.forEach(mk => {
         const d = mk._fincData;
         const locMatch = tag === 'all' || d.province === tag || d.type === tag;
@@ -146,13 +175,19 @@ function filterMarkers(tag, el) {
 
 function filterByComponent(comp, el) {
     document.querySelectorAll('.comp-chip').forEach(c => c.classList.remove('active'));
-    el.classList.add('active');
+    if (el) el.classList.add('active');
+    // also sync mobile select if called from chip
+    const compSel = document.querySelector('.mfm-select[onchange*="filterByComponent"]');
+    if (compSel && el) compSel.value = comp;
     leafletMarkers.forEach(mk => {
         const d = mk._fincData;
         const show = comp === 'all' || d.component === comp;
         // respect active loc filter too
         const locChip = document.querySelector('.loc-chip.active');
-        const locTag = locChip ? locChip.textContent.trim().toLowerCase().replace('all locations','all') : 'all';
+        const locSel = document.querySelector('.mfm-select[onchange*="filterMarkers"]');
+        const locTag = locChip
+            ? locChip.textContent.trim().toLowerCase().replace('all locations','all')
+            : (locSel ? locSel.value : 'all');
         const locMatch = locTag === 'all' || d.province === locTag || d.type === locTag;
         show && locMatch ? mk.addTo(map) : map.removeLayer(mk);
     });
@@ -233,7 +268,7 @@ function filterRepo(dim, val, btn) {
                      dim === 'loc'  ? '.ft-loc' :
                      dim === 'yr'   ? '.ft-yr'  : '.ft-th';
     document.querySelectorAll(selector).forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
+    if (btn) btn.classList.add('active');
     _repoActive[dim] = val;
     applyRepoFilter();
     gaEvent('repository_filter', { dimension: dim, filter: val });

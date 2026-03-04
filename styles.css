@@ -1314,7 +1314,12 @@
      color: var(--c-white)
  }
 
- /* Masonry-like grid */
+ /* repo filter mobile — hidden by default */
+ .repo-filter-mobile {
+     display: none;
+ }
+
+/* Masonry-like grid */
  .repo-grid {
      display: grid;
      grid-template-columns: repeat(4, 1fr);
@@ -1946,6 +1951,238 @@
      gap: .45rem;
  }
 
+
+/* ─── MAP FILTER MOBILE DROPDOWN ──────────────────────────── */
+ .map-filter-mobile {
+     display: none;
+     gap: .75rem;
+     margin-bottom: 1.2rem;
+ }
+
+ .mfm-group {
+     flex: 1;
+     display: flex;
+     flex-direction: column;
+     gap: .35rem;
+ }
+
+ .mfm-label {
+     font-family: var(--f-head);
+     font-size: .62rem;
+     font-weight: 700;
+     letter-spacing: .09em;
+     text-transform: uppercase;
+     color: var(--c-sub);
+ }
+
+ .mfm-select-wrap {
+     position: relative;
+ }
+
+ .mfm-select {
+     width: 100%;
+     appearance: none;
+     -webkit-appearance: none;
+     padding: .65rem 2.2rem .65rem .9rem;
+     border-radius: var(--r1);
+     border: 1.5px solid var(--c-border);
+     background: var(--c-white);
+     font-family: var(--f-head);
+     font-size: .75rem;
+     font-weight: 600;
+     color: var(--c-text);
+     cursor: pointer;
+     transition: border-color .2s;
+ }
+
+ .mfm-select:focus {
+     outline: none;
+     border-color: var(--c-mid);
+ }
+
+ .mfm-chevron {
+     position: absolute;
+     right: .75rem;
+     top: 50%;
+     transform: translateY(-50%);
+     font-size: .65rem;
+     color: var(--c-sub);
+     pointer-events: none;
+ }
+
+
+/* ─── MAP MOBILE CONTROLS (Province dropdown + Legend) ──── */
+ .map-mobile-controls {
+     display: none;
+     flex-direction: column;
+     gap: 0;
+     border: 1px solid var(--c-border);
+     border-top: none;
+     border-radius: 0 0 var(--r2) var(--r2);
+     background: var(--c-white);
+     overflow: hidden;
+ }
+
+ .mmc-row {
+     display: flex;
+     align-items: flex-end;
+     gap: .75rem;
+     padding: .9rem 1rem;
+ }
+
+ .mmc-row .mfm-group {
+     flex: 1;
+ }
+
+ .mmc-legend-btn {
+     flex-shrink: 0;
+     display: flex;
+     align-items: center;
+     gap: .4rem;
+     padding: .65rem 1rem;
+     border-radius: var(--r1);
+     border: 1.5px solid var(--c-border);
+     background: var(--c-white);
+     font-family: var(--f-head);
+     font-size: .72rem;
+     font-weight: 700;
+     color: var(--c-sub);
+     cursor: pointer;
+     transition: var(--tr);
+     white-space: nowrap;
+ }
+
+ .mmc-legend-btn.active,
+ .mmc-legend-btn:hover {
+     border-color: var(--c-mid);
+     color: var(--c-mid);
+     background: rgba(45,106,79,.05);
+ }
+
+ .mmc-legend {
+     display: none;
+     flex-direction: column;
+     gap: .55rem;
+     padding: .75rem 1rem 1rem;
+     border-top: 1px solid var(--c-border);
+     background: var(--c-bg);
+ }
+
+ .mmc-legend.open {
+     display: flex;
+ }
+
+ .mmc-legend-item {
+     display: flex;
+     align-items: center;
+     gap: .65rem;
+     font-size: .78rem;
+     color: var(--c-text);
+ }
+
+ .mmc-dot {
+     width: 10px;
+     height: 10px;
+     border-radius: 50%;
+     flex-shrink: 0;
+ }
+
+/* ─── MAP DETAIL BOTTOM SHEET ─────────────────────────────── */
+ .map-detail-sheet {
+     display: none;
+     position: fixed;
+     bottom: 0;
+     left: 0;
+     right: 0;
+     z-index: 9000;
+     background: var(--c-white);
+     border-radius: var(--r3) var(--r3) 0 0;
+     box-shadow: 0 -8px 40px rgba(0,0,0,.18);
+     transform: translateY(100%);
+     transition: transform .35s cubic-bezier(.4,0,.2,1);
+     max-height: 75vh;
+     overflow: hidden;
+ }
+
+ .map-detail-sheet.open {
+     transform: translateY(0);
+ }
+
+ .mds-bar {
+     display: flex;
+     justify-content: center;
+     padding: .6rem 0 .2rem;
+     cursor: pointer;
+ }
+
+ .mds-handle {
+     width: 36px;
+     height: 4px;
+     border-radius: 99px;
+     background: var(--c-border);
+ }
+
+ .mds-body {
+     padding: .5rem 1.25rem 1.5rem;
+     overflow-y: auto;
+     max-height: calc(75vh - 2rem);
+     position: relative;
+ }
+
+ .mds-close {
+     position: absolute;
+     top: .5rem;
+     right: 1.25rem;
+     width: 30px;
+     height: 30px;
+     border-radius: 50%;
+     border: none;
+     background: var(--c-bg);
+     color: var(--c-sub);
+     font-size: .85rem;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     cursor: pointer;
+ }
+
+ .mds-img {
+     width: 100%;
+     height: 140px;
+     object-fit: cover;
+     border-radius: var(--r2);
+     margin-bottom: .75rem;
+ }
+
+ .mds-title {
+     font-family: var(--f-head);
+     font-size: 1rem;
+     font-weight: 800;
+     color: var(--c-forest);
+     margin-bottom: .4rem;
+ }
+
+ .mds-sub {
+     font-size: .82rem;
+     color: var(--c-sub);
+     line-height: 1.65;
+     margin-bottom: .75rem;
+ }
+
+ .mds-stats {
+     display: grid;
+     grid-template-columns: repeat(4, 1fr);
+     gap: .5rem;
+     margin-bottom: .75rem;
+ }
+
+ .mds-tags {
+     display: flex;
+     flex-wrap: wrap;
+     gap: .35rem;
+     margin-bottom: .75rem;
+ }
+
 /* ═══════════════════════════════════════════════════════════
     MOBILE NAV DRAWER
  ═══════════════════════════════════════════════════════════ */
@@ -2079,7 +2316,30 @@
 
  @media(max-width:768px) {
      .stats-wrap {
-         grid-template-columns: repeat(2, 1fr)
+         grid-template-columns: repeat(2, 1fr);
+         padding: 0 1rem
+     }
+
+     .stat-item {
+         padding: 1.3rem .75rem;
+         border-right: none;
+         border-bottom: 1px solid rgba(255,255,255,.07)
+     }
+
+     .stat-item:nth-child(odd) {
+         border-right: 1px solid rgba(255,255,255,.07)
+     }
+
+     .stat-item:nth-last-child(-n+2) {
+         border-bottom: none
+     }
+
+     .stat-num {
+         font-size: 1.65rem
+     }
+
+     .stat-lbl {
+         font-size: .65rem
      }
 
      .impact-grid {
@@ -2118,8 +2378,33 @@
          padding: .75rem 1.25rem
      }
 
+     #hero {
+         height: auto;
+         min-height: 100svh
+     }
+
      .hero-body {
-         padding-top: 80px
+         padding: 65px 1.25rem 2.5rem;
+         align-items: flex-start
+     }
+
+     .hero-eyebrow {
+         margin-bottom: 1rem;
+         font-size: .62rem
+     }
+
+     .hero-h1 {
+         margin-bottom: 1rem
+     }
+
+     .hero-sub {
+         font-size: .92rem;
+         margin-bottom: 1.6rem;
+         line-height: 1.7
+     }
+
+     .hero-scroll {
+         display: none
      }
 
      #header.scrolled .navbar {
@@ -2146,6 +2431,35 @@
          min-width: unset
      }
 
+     .map-filter-row {
+         display: none
+     }
+
+     .map-filter-mobile {
+         display: flex
+     }
+
+     .map-container {
+         border-radius: var(--r2) var(--r2) 0 0;
+         border-bottom: none
+     }
+
+     .map-sidebar {
+         display: none
+     }
+
+     .map-mobile-controls {
+         display: flex
+     }
+
+     .map-detail-sheet {
+         display: block
+     }
+
+     #leaflet-map {
+         height: min(62vw, 380px)
+     }
+
      .focus-grid {
          max-width: 100%
      }
@@ -2156,6 +2470,22 @@
 
      .footer-grid {
          grid-template-columns: 1fr
+     }
+
+     /* repo filters → dropdowns on mobile */
+     .repo-controls .filter-tabs {
+         display: none
+     }
+
+     .repo-filter-mobile {
+         display: grid;
+         grid-template-columns: 1fr 1fr;
+         gap: .65rem;
+         margin-bottom: 1.4rem
+     }
+
+     .repo-header {
+         margin-bottom: 1rem
      }
  }
 
@@ -2170,5 +2500,22 @@
 
      .pillar-list {
          grid-template-columns: 1fr
+     }
+
+     .stats-wrap {
+         grid-template-columns: repeat(2, 1fr);
+         padding: 0 .5rem
+     }
+
+     .stat-num {
+         font-size: 1.4rem
+     }
+
+     .stat-item {
+         padding: 1rem .5rem
+     }
+
+     .stat-lbl {
+         font-size: .6rem
      }
  }

@@ -411,6 +411,36 @@
         </div>
       </div>
 
+      <!-- Mobile dropdown filters (hidden on desktop, shown on mobile) -->
+      <div class="map-filter-mobile">
+        <div class="mfm-group">
+          <label class="mfm-label">Location</label>
+          <div class="mfm-select-wrap">
+            <select class="mfm-select" onchange="filterMarkers(this.value, null)">
+              <option value="all">All Locations</option>
+              <option value="jambi">Jambi</option>
+              <option value="kalimantan">Kalimantan</option>
+              <option value="lampung">Lampung</option>
+              <option value="flood">Flood Zones</option>
+              <option value="community">Community Hubs</option>
+            </select>
+            <span class="mfm-chevron">&#8964;</span>
+          </div>
+        </div>
+        <div class="mfm-group">
+          <label class="mfm-label">Component</label>
+          <div class="mfm-select-wrap">
+            <select class="mfm-select" onchange="filterByComponent(this.value, null)">
+              <option value="all">All Components</option>
+              <option value="1100">Flood Risk</option>
+              <option value="1200">NbS</option>
+              <option value="1300">Climate Finance</option>
+            </select>
+            <span class="mfm-chevron">&#8964;</span>
+          </div>
+        </div>
+      </div>
+
       <div class="map-container rv">
         <div id="leaflet-map"></div>
         <div class="map-sidebar">
@@ -527,9 +557,58 @@
             </div>
           </div>
         </div>
+        <div class="map-mobile-controls">
+          <div class="mmc-row">
+            <div class="mfm-group">
+              <label class="mfm-label">Province</label>
+              <div class="mfm-select-wrap">
+                <select class="mfm-select" onchange="focusProvince(this.value)">
+                  <option value="jambi">Jambi Province</option>
+                  <option value="kalimantan-east">East Kalimantan</option>
+                  <option value="kalimantan-west">West Kalimantan</option>
+                  <option value="lampung">Lampung Province</option>
+                </select>
+                <i class="fa-solid fa-chevron-down mfm-chevron"></i>
+              </div>
+            </div>
+            <button class="mmc-legend-btn" onclick="toggleMobileLegend(this)">
+              <i class="fa-solid fa-layer-group"></i> Legend
+            </button>
+          </div>
+          <div class="mmc-legend" id="mmcLegend">
+            <div class="mmc-legend-item"><span class="mmc-dot" style="background:#2ecc71"></span>Jambi project sites
+            </div>
+            <div class="mmc-legend-item"><span class="mmc-dot" style="background:#f0a500"></span>Kalimantan project
+              sites</div>
+            <div class="mmc-legend-item"><span class="mmc-dot" style="background:#3498db"></span>Lampung project sites
+            </div>
+            <div class="mmc-legend-item"><span class="mmc-dot" style="background:#e74c3c"></span>High flood-risk zones
+            </div>
+            <div class="mmc-legend-item"><span class="mmc-dot" style="background:#9b59b6"></span>Community hubs</div>
+          </div>
+        </div>
+
+        <div class="map-detail-sheet" id="mapDetailSheet">
+          <div class="mds-bar" onclick="closeMobileDetail()">
+            <div class="mds-handle"></div>
+          </div>
+          <div class="mds-body">
+            <button class="mds-close" onclick="closeMobileDetail()"><i class="fa-solid fa-xmark"></i></button>
+            <img id="mdsImg" class="mds-img" src="" alt="" />
+            <div id="mdsTitle" class="mds-title"></div>
+            <div id="mdsSub" class="mds-sub"></div>
+            <div id="mdsStats" class="mds-stats"></div>
+            <div id="mdsTags" class="mds-tags"></div>
+            <a class="btn btn-green"
+              style="width:100%;justify-content:center;font-size:.75rem;padding:.65rem;margin-top:.5rem" id="mdsContact"
+              onclick="gaEvent('map_mobile_contact',{location:currentDetail})">
+              Contact Site Team &rarr;
+            </a>
+          </div>
+        </div>
       </div>
-    </div>
   </section>
+
   <section id="repository">
     <div class="wrap">
       <div class="repo-header">
@@ -570,6 +649,59 @@
             <button class="ft ft-th" onclick="filterRepo('th','flood-risk',this)">Flood Risk</button>
             <button class="ft ft-th" onclick="filterRepo('th','nbs',this)">Nature-based Solutions</button>
             <button class="ft ft-th" onclick="filterRepo('th','climate-finance',this)">Climate Finance</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile dropdowns (hidden on desktop) -->
+      <div class="repo-filter-mobile">
+        <div class="mfm-group">
+          <label class="mfm-label">Type</label>
+          <div class="mfm-select-wrap">
+            <select class="mfm-select" onchange="filterRepo('type',this.value,null)">
+              <option value="all">All Types</option>
+              <option value="photo">Photos</option>
+              <option value="video">Videos</option>
+              <option value="report">Reports</option>
+            </select>
+            <span class="mfm-chevron">&#8964;</span>
+          </div>
+        </div>
+        <div class="mfm-group">
+          <label class="mfm-label">Location</label>
+          <div class="mfm-select-wrap">
+            <select class="mfm-select" onchange="filterRepo('loc',this.value,null)">
+              <option value="all">All Locations</option>
+              <option value="jambi">Jambi</option>
+              <option value="kalimantan">Kalimantan</option>
+              <option value="lampung">Lampung</option>
+            </select>
+            <span class="mfm-chevron">&#8964;</span>
+          </div>
+        </div>
+        <div class="mfm-group">
+          <label class="mfm-label">Year</label>
+          <div class="mfm-select-wrap">
+            <select class="mfm-select" onchange="filterRepo('yr',this.value,null)">
+              <option value="all">All Years</option>
+              <option value="2022">2022</option>
+              <option value="2023">2023</option>
+              <option value="2024">2024</option>
+              <option value="2025">2025</option>
+            </select>
+            <span class="mfm-chevron">&#8964;</span>
+          </div>
+        </div>
+        <div class="mfm-group">
+          <label class="mfm-label">Theme</label>
+          <div class="mfm-select-wrap">
+            <select class="mfm-select" onchange="filterRepo('th',this.value,null)">
+              <option value="all">All Themes</option>
+              <option value="flood-risk">Flood Risk</option>
+              <option value="nbs">Nature-based Solutions</option>
+              <option value="climate-finance">Climate Finance</option>
+            </select>
+            <span class="mfm-chevron">&#8964;</span>
           </div>
         </div>
       </div>
@@ -677,6 +809,8 @@
       </div>
     </div>
   </section>
+
+  
   <div id="lb" onclick="closeLb()">
     <div class="lb-x" onclick="closeLb()"><i class="fa-solid fa-xmark"></i></div>
     <img id="lb-img" src="" alt="" />
