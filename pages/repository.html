@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Knowledge Repository — FINCAPES</title>
+  <meta name="description" content="FINCAPES media and knowledge repository — photos, videos, and reports from project sites across Indonesia." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXX');
+    function gaEvent(name, params) { gtag('event', name, params || {}); }
+  </script>
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body class="page">
+
+  <header id="header">
+    <div class="topbar">
+      <span><i class="fa-solid fa-leaf"></i> &nbsp;FINCAPES — Flood Impacts, Carbon Pricing &amp; Ecosystem Sustainability</span>
+      <div class="topbar-right">
+        <a href="mailto:fincapes@uwaterloo.ca">fincapes@uwaterloo.ca</a>
+        <a href="https://fincapesproject.com">www.fincapesproject.com</a>
+      </div>
+    </div>
+    <div class="navbar">
+      <div class="nav-logo">
+        <a href="../index.html"><img class="nav-logo-img" src="https://fincapesproject.com/images/logo/logo-fincapes.png" alt="FINCAPES" /></a>
+      </div>
+      <ul class="nav-menu">
+        <li><a class="nav-link" href="../index.html">Home</a></li>
+        <li><a class="nav-link" href="about.html">About</a></li>
+        <li><a class="nav-link" href="focus.html">Focus</a></li>
+        <li><a class="nav-link" href="impact.html">Impact</a></li>
+        <li><a class="nav-link" href="where-we-work.html">Where We Work</a></li>
+        <li><a class="nav-link active" href="repository.html">Repository</a></li>
+        <li><a class="nav-link" href="news.html">News</a></li>
+        <li><a class="nav-link" href="partners.html">Partners</a></li>
+      </ul>
+      <a href="mailto:fincapes@uwaterloo.ca" class="nav-cta">Get Involved</a>
+      <div class="nav-ham" id="navHam" onclick="toggleMobileNav()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="nav-mobile" id="navMobile">
+      <ul class="nav-mobile-list">
+        <li><a href="../index.html" onclick="closeMobileNav()">Home</a></li>
+        <li><a href="about.html" onclick="closeMobileNav()">About</a></li>
+        <li><a href="focus.html" onclick="closeMobileNav()">Focus</a></li>
+        <li><a href="impact.html" onclick="closeMobileNav()">Impact</a></li>
+        <li><a href="where-we-work.html" onclick="closeMobileNav()">Where We Work</a></li>
+        <li><a href="repository.html" onclick="closeMobileNav()">Repository</a></li>
+        <li><a href="news.html" onclick="closeMobileNav()">News</a></li>
+        <li><a href="partners.html" onclick="closeMobileNav()">Partners</a></li>
+      </ul>
+      <a href="mailto:fincapes@uwaterloo.ca" class="nav-mobile-cta" onclick="closeMobileNav()">Get Involved</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="repository" class="pt-page">
+      <div class="wrap">
+        <div class="repo-header">
+          <div class="rv-l">
+            <div class="eyebrow">Knowledge Repository</div>
+            <h2 class="h2" style="color:var(--c-forest)">Media &amp; <span style="color:var(--c-mid)">Resources</span></h2>
+          </div>
+          <div class="repo-controls rv-r">
+            <div class="repo-search">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" />
+              </svg>
+              <input type="text" id="repoSearch" placeholder="Search resources…" oninput="searchRepo()" />
+            </div>
+            <div class="filter-tabs">
+              <button class="ft active" onclick="filterRepo('type','all',this)">All Types</button>
+              <button class="ft" onclick="filterRepo('type','photo',this)">Photos</button>
+              <button class="ft" onclick="filterRepo('type','video',this)">Videos</button>
+              <button class="ft" onclick="filterRepo('type','report',this)">Reports</button>
+            </div>
+            <div class="filter-tabs" style="margin-top:.45rem">
+              <button class="ft ft-loc active" onclick="filterRepo('loc','all',this)">All Locations</button>
+              <button class="ft ft-loc" onclick="filterRepo('loc','jambi',this)">Jambi</button>
+              <button class="ft ft-loc" onclick="filterRepo('loc','kalimantan',this)">Kalimantan</button>
+              <button class="ft ft-loc" onclick="filterRepo('loc','lampung',this)">Lampung</button>
+            </div>
+            <div class="filter-tabs" style="margin-top:.45rem">
+              <button class="ft ft-yr active" onclick="filterRepo('yr','all',this)">All Years</button>
+              <button class="ft ft-yr" onclick="filterRepo('yr','2022',this)">2022</button>
+              <button class="ft ft-yr" onclick="filterRepo('yr','2023',this)">2023</button>
+              <button class="ft ft-yr" onclick="filterRepo('yr','2024',this)">2024</button>
+              <button class="ft ft-yr" onclick="filterRepo('yr','2025',this)">2025</button>
+            </div>
+            <div class="filter-tabs" style="margin-top:.45rem">
+              <button class="ft ft-th active" onclick="filterRepo('th','all',this)">All Themes</button>
+              <button class="ft ft-th" onclick="filterRepo('th','flood-risk',this)">Flood Risk</button>
+              <button class="ft ft-th" onclick="filterRepo('th','nbs',this)">Nature-based Solutions</button>
+              <button class="ft ft-th" onclick="filterRepo('th','climate-finance',this)">Climate Finance</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile dropdowns -->
+        <div class="repo-filter-mobile">
+          <div class="mfm-group">
+            <label class="mfm-label">Type</label>
+            <div class="mfm-select-wrap">
+              <select class="mfm-select" onchange="filterRepo('type',this.value,null)">
+                <option value="all">All Types</option>
+                <option value="photo">Photos</option>
+                <option value="video">Videos</option>
+                <option value="report">Reports</option>
+              </select>
+              <span class="mfm-chevron">&#8964;</span>
+            </div>
+          </div>
+          <div class="mfm-group">
+            <label class="mfm-label">Location</label>
+            <div class="mfm-select-wrap">
+              <select class="mfm-select" onchange="filterRepo('loc',this.value,null)">
+                <option value="all">All Locations</option>
+                <option value="jambi">Jambi</option>
+                <option value="kalimantan">Kalimantan</option>
+                <option value="lampung">Lampung</option>
+              </select>
+              <span class="mfm-chevron">&#8964;</span>
+            </div>
+          </div>
+          <div class="mfm-group">
+            <label class="mfm-label">Year</label>
+            <div class="mfm-select-wrap">
+              <select class="mfm-select" onchange="filterRepo('yr',this.value,null)">
+                <option value="all">All Years</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+                <option value="2025">2025</option>
+              </select>
+              <span class="mfm-chevron">&#8964;</span>
+            </div>
+          </div>
+          <div class="mfm-group">
+            <label class="mfm-label">Theme</label>
+            <div class="mfm-select-wrap">
+              <select class="mfm-select" onchange="filterRepo('th',this.value,null)">
+                <option value="all">All Themes</option>
+                <option value="flood-risk">Flood Risk</option>
+                <option value="nbs">Nature-based Solutions</option>
+                <option value="climate-finance">Climate Finance</option>
+              </select>
+              <span class="mfm-chevron">&#8964;</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="repo-grid" id="repoGrid">
+          <div class="repo-item span2 rv d1" data-tags="jambi photo forest 2024 nbs">
+            <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=900&auto=format&fit=crop&q=80" alt="Jambi Rainforest" loading="lazy" />
+            <div class="repo-badge badge-photo" data-type="photo"><i class="fa-solid fa-camera"></i> Photo</div>
+            <div class="repo-overlay">
+              <div class="ro-title">Jambi Rainforest Canopy</div>
+              <div class="ro-meta">Kerinci Seblat Buffer Zone · March 2024</div>
+              <span class="ro-dl" onclick="downloadItem(event,'Jambi_Rainforest_2024.jpg')"><i class="fa-solid fa-download"></i> Download</span>
+            </div>
+          </div>
+          <div class="repo-item rv d2" data-tags="kalimantan photo community 2024 nbs">
+            <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=600&auto=format&fit=crop&q=80" alt="Community" loading="lazy" />
+            <div class="repo-badge badge-photo" data-type="photo"><i class="fa-solid fa-camera"></i> Photo</div>
+            <div class="repo-overlay">
+              <div class="ro-title">Community Participatory Mapping</div>
+              <div class="ro-meta">East Kalimantan · Jan 2024</div>
+              <span class="ro-dl" onclick="downloadItem(event,'Community_Mapping_Kalimantan.jpg')"><i class="fa-solid fa-download"></i> Download</span>
+            </div>
+          </div>
+          <div class="repo-item rv d3" data-tags="lampung photo wildlife flood 2024 flood-risk">
+            <img src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?w=600&auto=format&fit=crop&q=80" alt="Lampung" loading="lazy" />
+            <div class="repo-badge badge-photo" data-type="photo"><i class="fa-solid fa-camera"></i> Photo</div>
+            <div class="repo-overlay">
+              <div class="ro-title">Bukit Barisan Selatan Aerial</div>
+              <div class="ro-meta">Lampung · Drone Survey 2024</div>
+              <span class="ro-dl" onclick="downloadItem(event,'BBS_Aerial_2024.jpg')"><i class="fa-solid fa-download"></i> Download</span>
+            </div>
+          </div>
+          <div class="repo-item rv d1" data-tags="jambi video flood 2023 flood-risk">
+            <img src="https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?w=600&auto=format&fit=crop&q=80" alt="Peatland" loading="lazy" />
+            <div class="repo-badge badge-video" data-type="video"><i class="fa-solid fa-play"></i> Video</div>
+            <div class="repo-overlay">
+              <div class="ro-title">Peatland Flood Documentary</div>
+              <div class="ro-meta">Jambi · 22 min · 2023</div>
+            </div>
+          </div>
+          <div class="repo-item rv d2" data-tags="kalimantan report carbon 2024 climate-finance">
+            <img src="https://images.unsplash.com/photo-1504707748692-419802cf939d?w=600&auto=format&fit=crop&q=80" alt="Report" loading="lazy" />
+            <div class="repo-badge badge-report" data-type="report"><i class="fa-solid fa-file-lines"></i> Report</div>
+            <div class="repo-overlay">
+              <div class="ro-title">Carbon Pricing Framework 2024</div>
+              <div class="ro-meta">FINCAPES Research · PDF · 48pp</div>
+              <span class="ro-dl" onclick="downloadItem(event,'Carbon_Pricing_Framework_2024.pdf')"><i class="fa-solid fa-file-pdf"></i> Download PDF</span>
+            </div>
+          </div>
+          <div class="repo-item rv d3" data-tags="lampung photo community 2024 nbs">
+            <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&auto=format&fit=crop&q=80" alt="Farmer" loading="lazy" />
+            <div class="repo-badge badge-photo" data-type="photo"><i class="fa-solid fa-camera"></i> Photo</div>
+            <div class="repo-overlay">
+              <div class="ro-title">Agroforestry Field School</div>
+              <div class="ro-meta">Lampung · Feb 2024</div>
+              <span class="ro-dl" onclick="downloadItem(event,'Agroforestry_Lampung.jpg')"><i class="fa-solid fa-download"></i> Download</span>
+            </div>
+          </div>
+          <div class="repo-item span2 rv d4" data-tags="jambi kalimantan photo aerial 2023 nbs">
+            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=900&auto=format&fit=crop&q=80" alt="Forest Aerial" loading="lazy" />
+            <div class="repo-badge badge-photo" data-type="photo"><i class="fa-solid fa-camera"></i> Photo</div>
+            <div class="repo-overlay">
+              <div class="ro-title">Multi-Province Forest Canopy Survey</div>
+              <div class="ro-meta">Jambi · Kalimantan · 2023 Aerial Campaign</div>
+              <span class="ro-dl" onclick="downloadItem(event,'Forest_Survey_2023.jpg')"><i class="fa-solid fa-download"></i> Download</span>
+            </div>
+          </div>
+          <div class="repo-item rv d5" data-tags="kalimantan video community 2024 nbs">
+            <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600&auto=format&fit=crop&q=80" alt="Community" loading="lazy" />
+            <div class="repo-badge badge-video" data-type="video"><i class="fa-solid fa-play"></i> Video</div>
+            <div class="repo-overlay">
+              <div class="ro-title">Community Stories: Kalimantan</div>
+              <div class="ro-meta">Documentary · 8 min · 2024</div>
+            </div>
+          </div>
+          <div class="repo-item rv d6" data-tags="lampung jambi report flood 2023 flood-risk">
+            <img src="https://images.unsplash.com/photo-1526659666653-b0c8b3c1aa1c?w=600&auto=format&fit=crop&q=80" alt="Flood Report" loading="lazy" />
+            <div class="repo-badge badge-report" data-type="report"><i class="fa-solid fa-file-lines"></i> Report</div>
+            <div class="repo-overlay">
+              <div class="ro-title">Annual Flood Impact Report 2023</div>
+              <div class="ro-meta">FINCAPES · PDF · 72pp</div>
+              <span class="ro-dl" onclick="downloadItem(event,'Flood_Impact_Report_2023.pdf')"><i class="fa-solid fa-file-pdf"></i> Download PDF</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="repo-more">
+          <button class="btn btn-green" onclick="gaEvent('repository_load_more',{page:2})">Load More Resources</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section id="cta">
+    <div class="cta-inner">
+      <div class="eyebrow" style="justify-content:center;color:var(--c-pale);background:rgba(183,228,199,.12);border-color:rgba(183,228,199,.25)">Get Involved</div>
+      <h2 class="h2 rv" style="color:var(--c-white)">Join the<br /><span style="color:var(--c-pale)">Conservation Movement</span></h2>
+      <p class="lead rv" style="color:rgba(255,255,255,.62);margin:.8rem auto 2.5rem">
+        Partner with FINCAPES to protect Indonesia's forests and build climate resilience.
+        Whether you're a funder, researcher, or community organization — there's a role for you.
+      </p>
+      <div class="cta-btns rv">
+        <a href="mailto:fincapes@uwaterloo.ca" class="btn btn-white"><i class="fa-solid fa-envelope"></i> &nbsp;Contact Us</a>
+        <a href="repository.html" class="btn btn-outline"><i class="fa-solid fa-folder-open"></i> &nbsp;Access Resources</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <img class="logo-img" src="https://fincapesproject.com/images/logo/logo-fincapes.png" alt="FINCAPES" />
+          </div>
+          <p>Flood Impacts, Carbon Pricing &amp; Ecosystem Sustainability — building resilient landscapes in Indonesia since 2020.</p>
+          <div class="footer-socials">
+            <a class="soc"><i class="fa-brands fa-x-twitter"></i></a>
+            <a class="soc"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a class="soc"><i class="fa-brands fa-youtube"></i></a>
+            <a class="soc"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Explore</h5>
+          <a href="about.html">About FINCAPES</a>
+          <a href="impact.html">Our Impact</a>
+          <a href="where-we-work.html">Project Map</a>
+          <a href="repository.html">Knowledge Repository</a>
+          <a href="news.html">News &amp; Updates</a>
+        </div>
+        <div class="footer-col">
+          <h5>Provinces</h5>
+          <a href="where-we-work.html">Jambi</a>
+          <a href="where-we-work.html">Kalimantan</a>
+          <a href="where-we-work.html">Lampung</a>
+          <a href="where-we-work.html">All Locations</a>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <a href="mailto:fincapes@uwaterloo.ca">fincapes@uwaterloo.ca</a>
+          <a href="https://fincapesproject.com">www.fincapesproject.com</a>
+          <a href="#">University of Waterloo</a>
+          <a href="#">200 University Ave W,<br />Waterloo, ON, Canada</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 FINCAPES Project · University of Waterloo. All rights reserved.</p>
+        <p><i class="fa-solid fa-graduation-cap" style="color:var(--c-sage)"></i> A University of Waterloo Research Initiative</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../repo.js"></script>
+  <script src="../map.js"></script>
+</body>
+</html>

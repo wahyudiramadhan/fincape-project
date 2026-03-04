@@ -48,6 +48,11 @@
      overflow-x: hidden
  }
 
+ /* Page-level top offset for fixed header (topbar ~36px + navbar ~64px) */
+ .pt-page {
+     padding-top: 8rem !important;
+ }
+
  a {
      text-decoration: none;
      color: inherit
@@ -404,7 +409,8 @@
      filter: brightness(0) invert(1);
  }
 
- #header.scrolled .nav-logo-img {
+ #header.scrolled .nav-logo-img,
+ body.page .nav-logo-img {
      filter: none;
  }
 
@@ -466,6 +472,37 @@
  }
 
  #header.scrolled .nav-ham span {
+     background: var(--c-forest)
+ }
+
+ /* ─── Solid navbar for inner pages (body.page) ──────────────── */
+ body.page .navbar {
+     background: rgba(255, 255, 255, .97);
+     backdrop-filter: blur(20px) saturate(1.6);
+     box-shadow: 0 1px 0 rgba(0, 0, 0, .07);
+ }
+
+ body.page .nav-link {
+     color: var(--c-sub)
+ }
+
+ body.page .nav-link:hover,
+ body.page .nav-link.active {
+     color: var(--c-bright)
+ }
+
+ body.page .nav-cta {
+     background: var(--c-mid);
+     border-color: var(--c-mid);
+     color: var(--c-white)
+ }
+
+ body.page .nav-cta:hover {
+     background: var(--c-forest);
+     border-color: var(--c-forest)
+ }
+
+ body.page .nav-ham span {
      background: var(--c-forest)
  }
 
@@ -1643,6 +1680,10 @@
      color: var(--c-white)
  }
 
+ .partners-more-btn {
+     display: none;
+ }
+
  /* ═══════════════════════════════════════════════════════════
      §7 CTA BAND — Green Nature style full-width
   ═══════════════════════════════════════════════════════════ */
@@ -2486,6 +2527,40 @@
 
      .repo-header {
          margin-bottom: 1rem
+     }
+
+     /* partners collapse on mobile */
+     .p-extra {
+         display: none
+     }
+
+     .partners-grid.expanded .p-extra {
+         display: flex
+     }
+
+     .partners-more-btn {
+         display: inline-flex;
+         align-items: center;
+         gap: .5rem;
+         margin-top: 1.2rem;
+         padding: .6rem 1.6rem;
+         border: 1.5px solid rgba(255,255,255,.2);
+         border-radius: 99px;
+         background: rgba(255,255,255,.06);
+         color: rgba(255,255,255,.7);
+         font-family: var(--f-head);
+         font-size: .75rem;
+         font-weight: 700;
+         letter-spacing: .06em;
+         text-transform: uppercase;
+         cursor: pointer;
+         transition: var(--tr)
+     }
+
+     .partners-more-btn:hover {
+         background: rgba(82,183,136,.2);
+         border-color: rgba(82,183,136,.4);
+         color: var(--c-white)
      }
  }
 

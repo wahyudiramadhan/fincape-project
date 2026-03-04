@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Where We Work — FINCAPES</title>
+  <meta name="description" content="Interactive map of FINCAPES project locations across Jambi, Kalimantan, and Lampung, Indonesia." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXX');
+    function gaEvent(name, params) { gtag('event', name, params || {}); }
+  </script>
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body class="page">
+
+  <header id="header">
+    <div class="topbar">
+      <span><i class="fa-solid fa-leaf"></i> &nbsp;FINCAPES — Flood Impacts, Carbon Pricing &amp; Ecosystem Sustainability</span>
+      <div class="topbar-right">
+        <a href="mailto:fincapes@uwaterloo.ca">fincapes@uwaterloo.ca</a>
+        <a href="https://fincapesproject.com">www.fincapesproject.com</a>
+      </div>
+    </div>
+    <div class="navbar">
+      <div class="nav-logo">
+        <a href="../index.html"><img class="nav-logo-img" src="https://fincapesproject.com/images/logo/logo-fincapes.png" alt="FINCAPES" /></a>
+      </div>
+      <ul class="nav-menu">
+        <li><a class="nav-link" href="../index.html">Home</a></li>
+        <li><a class="nav-link" href="about.html">About</a></li>
+        <li><a class="nav-link" href="focus.html">Focus</a></li>
+        <li><a class="nav-link" href="impact.html">Impact</a></li>
+        <li><a class="nav-link active" href="where-we-work.html">Where We Work</a></li>
+        <li><a class="nav-link" href="repository.html">Repository</a></li>
+        <li><a class="nav-link" href="news.html">News</a></li>
+        <li><a class="nav-link" href="partners.html">Partners</a></li>
+      </ul>
+      <a href="mailto:fincapes@uwaterloo.ca" class="nav-cta">Get Involved</a>
+      <div class="nav-ham" id="navHam" onclick="toggleMobileNav()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="nav-mobile" id="navMobile">
+      <ul class="nav-mobile-list">
+        <li><a href="../index.html" onclick="closeMobileNav()">Home</a></li>
+        <li><a href="about.html" onclick="closeMobileNav()">About</a></li>
+        <li><a href="focus.html" onclick="closeMobileNav()">Focus</a></li>
+        <li><a href="impact.html" onclick="closeMobileNav()">Impact</a></li>
+        <li><a href="where-we-work.html" onclick="closeMobileNav()">Where We Work</a></li>
+        <li><a href="repository.html" onclick="closeMobileNav()">Repository</a></li>
+        <li><a href="news.html" onclick="closeMobileNav()">News</a></li>
+        <li><a href="partners.html" onclick="closeMobileNav()">Partners</a></li>
+      </ul>
+      <a href="mailto:fincapes@uwaterloo.ca" class="nav-mobile-cta" onclick="closeMobileNav()">Get Involved</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="map-section" class="pt-page">
+      <div class="wrap">
+        <div class="map-header rv">
+          <div class="eyebrow" style="justify-content:center">Interactive Project Map</div>
+          <h2 class="h2" style="color:var(--c-forest)">Project Locations <span style="color:var(--c-mid)">Across Indonesia</span></h2>
+          <p class="lead" style="max-width:54ch;margin:.8rem auto 0">
+            Explore FINCAPES intervention zones, flood assessment areas, and community sites. Click any marker for details.
+          </p>
+        </div>
+
+        <div class="map-filter-row rv" style="margin-bottom:.6rem">
+          <span class="mf-label">Location:</span>
+          <div class="map-filters">
+            <div class="mf-chip loc-chip active" onclick="filterMarkers('all',this)">
+              <div class="dot" style="background:#52b788"></div> All Locations
+            </div>
+            <div class="mf-chip loc-chip" onclick="filterMarkers('jambi',this)">
+              <div class="dot" style="background:#2ecc71"></div> Jambi
+            </div>
+            <div class="mf-chip loc-chip" onclick="filterMarkers('kalimantan',this)">
+              <div class="dot" style="background:#f0a500"></div> Kalimantan
+            </div>
+            <div class="mf-chip loc-chip" onclick="filterMarkers('lampung',this)">
+              <div class="dot" style="background:#3498db"></div> Lampung
+            </div>
+            <div class="mf-chip loc-chip" onclick="filterMarkers('flood',this)">
+              <div class="dot" style="background:#e74c3c"></div> Flood Zones
+            </div>
+            <div class="mf-chip loc-chip" onclick="filterMarkers('community',this)">
+              <div class="dot" style="background:#9b59b6"></div> Community Hubs
+            </div>
+          </div>
+        </div>
+        <div class="map-filter-row rv" style="margin-bottom:1.5rem">
+          <span class="mf-label">Component:</span>
+          <div class="map-filters">
+            <div class="mf-chip comp-chip active" onclick="filterByComponent('all',this)">
+              <div class="dot" style="background:#2d6a4f"></div> All
+            </div>
+            <div class="mf-chip comp-chip" onclick="filterByComponent('1100',this)">
+              <div class="dot" style="background:#2d6a4f"></div> 1100 — Flood Risk
+            </div>
+            <div class="mf-chip comp-chip" onclick="filterByComponent('1200',this)">
+              <div class="dot" style="background:#40916c"></div> 1200 — NbS
+            </div>
+            <div class="mf-chip comp-chip" onclick="filterByComponent('1300',this)">
+              <div class="dot" style="background:#c67c1a"></div> 1300 — Climate Finance
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile dropdown filters -->
+        <div class="map-filter-mobile">
+          <div class="mfm-group">
+            <label class="mfm-label">Location</label>
+            <div class="mfm-select-wrap">
+              <select class="mfm-select" onchange="filterMarkers(this.value, null)">
+                <option value="all">All Locations</option>
+                <option value="jambi">Jambi</option>
+                <option value="kalimantan">Kalimantan</option>
+                <option value="lampung">Lampung</option>
+                <option value="flood">Flood Zones</option>
+                <option value="community">Community Hubs</option>
+              </select>
+              <span class="mfm-chevron">&#8964;</span>
+            </div>
+          </div>
+          <div class="mfm-group">
+            <label class="mfm-label">Component</label>
+            <div class="mfm-select-wrap">
+              <select class="mfm-select" onchange="filterByComponent(this.value, null)">
+                <option value="all">All Components</option>
+                <option value="1100">Flood Risk</option>
+                <option value="1200">NbS</option>
+                <option value="1300">Climate Finance</option>
+              </select>
+              <span class="mfm-chevron">&#8964;</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="map-container rv">
+          <div id="leaflet-map"></div>
+          <div class="map-sidebar">
+            <div class="sidebar-tabs">
+              <div class="sidebar-tab active" onclick="showTab('provinces',this)">Provinces</div>
+              <div class="sidebar-tab" onclick="showTab('legend',this)">Legend</div>
+            </div>
+            <div class="sidebar-body" id="sidebarBody">
+              <div id="tabProvinces">
+                <div class="province-item active" id="prov-jambi" onclick="focusProvince('jambi')">
+                  <div class="prov-dot g"></div>
+                  <div>
+                    <div class="prov-name">Jambi Province</div>
+                    <div class="prov-meta">Kerinci Seblat · Peatland restoration<br />42 community sites active</div>
+                  </div>
+                  <div class="prov-stat"><div class="v">312k</div><div class="l">ha</div></div>
+                </div>
+                <div class="province-item" id="prov-kalimantan" onclick="focusProvince('kalimantan-east')">
+                  <div class="prov-dot y"></div>
+                  <div>
+                    <div class="prov-name">East Kalimantan</div>
+                    <div class="prov-meta">REDD+ pilot zones · Orangutan corridors<br />51 community sites active</div>
+                  </div>
+                  <div class="prov-stat"><div class="v">264k</div><div class="l">ha</div></div>
+                </div>
+                <div class="province-item" id="prov-kalimantan-west" onclick="focusProvince('kalimantan-west')">
+                  <div class="prov-dot y"></div>
+                  <div>
+                    <div class="prov-name">West Kalimantan</div>
+                    <div class="prov-meta">Kapuas Hulu · Mangrove restoration<br />23 community sites active</div>
+                  </div>
+                  <div class="prov-stat"><div class="v">125k</div><div class="l">ha</div></div>
+                </div>
+                <div class="province-item" id="prov-lampung" onclick="focusProvince('lampung')">
+                  <div class="prov-dot b"></div>
+                  <div>
+                    <div class="prov-name">Lampung Province</div>
+                    <div class="prov-meta">Bukit Barisan Selatan NP · Tiger habitat<br />31 community sites active</div>
+                  </div>
+                  <div class="prov-stat"><div class="v">146k</div><div class="l">ha</div></div>
+                </div>
+                <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--c-border)">
+                  <p class="small" style="font-size:.7rem;color:var(--c-sub);line-height:1.7">
+                    <i class="fa-regular fa-lightbulb" style="color:var(--c-mid)"></i> Click any province card or map marker to see detailed site information.
+                  </p>
+                </div>
+              </div>
+              <div id="tabLegend" style="display:none">
+                <p class="small" style="margin-bottom:1rem">Map symbols and layer guide:</p>
+                <div style="display:flex;flex-direction:column;gap:.7rem">
+                  <div style="display:flex;align-items:center;gap:.7rem">
+                    <div style="width:12px;height:12px;border-radius:50%;background:#2ecc71;box-shadow:0 0 0 3px rgba(46,204,113,.25)"></div>
+                    <span class="small">Jambi project sites</span>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:.7rem">
+                    <div style="width:12px;height:12px;border-radius:50%;background:#f0a500;box-shadow:0 0 0 3px rgba(240,165,0,.25)"></div>
+                    <span class="small">Kalimantan project sites</span>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:.7rem">
+                    <div style="width:12px;height:12px;border-radius:50%;background:#3498db;box-shadow:0 0 0 3px rgba(52,152,219,.25)"></div>
+                    <span class="small">Lampung project sites</span>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:.7rem">
+                    <div style="width:12px;height:12px;border-radius:50%;background:#e74c3c;box-shadow:0 0 0 3px rgba(231,76,60,.25)"></div>
+                    <span class="small">High flood-risk zones</span>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:.7rem">
+                    <div style="width:12px;height:12px;border-radius:50%;background:#9b59b6;box-shadow:0 0 0 3px rgba(155,89,182,.25)"></div>
+                    <span class="small">Community hubs</span>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:.7rem">
+                    <div style="width:12px;height:12px;border-radius:3px;background:rgba(46,204,113,.3);border:2px solid #2ecc71"></div>
+                    <span class="small">Conservation zone boundary</span>
+                  </div>
+                </div>
+              </div>
+              <div id="detailPanel" class="detail-panel">
+                <div class="detail-close" onclick="closeDetail()">← Back to list</div>
+                <img id="detailImg" class="detail-img" src="" alt="" />
+                <div id="detailTitle" class="detail-title"></div>
+                <div id="detailSub" class="detail-sub"></div>
+                <div id="detailStats" class="detail-stats"></div>
+                <div id="detailTags" class="detail-tags"></div>
+                <a class="btn btn-green" style="width:100%;justify-content:center;font-size:.75rem;padding:.65rem"
+                  onclick="gaEvent('map_sidebar_contact',{location:currentDetail})">
+                  Contact Site Team →
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="map-mobile-controls">
+            <div class="mmc-row">
+              <div class="mfm-group">
+                <label class="mfm-label">Province</label>
+                <div class="mfm-select-wrap">
+                  <select class="mfm-select" onchange="focusProvince(this.value)">
+                    <option value="jambi">Jambi Province</option>
+                    <option value="kalimantan-east">East Kalimantan</option>
+                    <option value="kalimantan-west">West Kalimantan</option>
+                    <option value="lampung">Lampung Province</option>
+                  </select>
+                  <i class="fa-solid fa-chevron-down mfm-chevron"></i>
+                </div>
+              </div>
+              <button class="mmc-legend-btn" onclick="toggleMobileLegend(this)">
+                <i class="fa-solid fa-layer-group"></i> Legend
+              </button>
+            </div>
+            <div class="mmc-legend" id="mmcLegend">
+              <div class="mmc-legend-item"><span class="mmc-dot" style="background:#2ecc71"></span>Jambi project sites</div>
+              <div class="mmc-legend-item"><span class="mmc-dot" style="background:#f0a500"></span>Kalimantan project sites</div>
+              <div class="mmc-legend-item"><span class="mmc-dot" style="background:#3498db"></span>Lampung project sites</div>
+              <div class="mmc-legend-item"><span class="mmc-dot" style="background:#e74c3c"></span>High flood-risk zones</div>
+              <div class="mmc-legend-item"><span class="mmc-dot" style="background:#9b59b6"></span>Community hubs</div>
+            </div>
+          </div>
+
+          <div class="map-detail-sheet" id="mapDetailSheet">
+            <div class="mds-bar" onclick="closeMobileDetail()">
+              <div class="mds-handle"></div>
+            </div>
+            <div class="mds-body">
+              <button class="mds-close" onclick="closeMobileDetail()"><i class="fa-solid fa-xmark"></i></button>
+              <img id="mdsImg" class="mds-img" src="" alt="" />
+              <div id="mdsTitle" class="mds-title"></div>
+              <div id="mdsSub" class="mds-sub"></div>
+              <div id="mdsStats" class="mds-stats"></div>
+              <div id="mdsTags" class="mds-tags"></div>
+              <a class="btn btn-green" style="width:100%;justify-content:center;font-size:.75rem;padding:.65rem;margin-top:.5rem"
+                id="mdsContact" onclick="gaEvent('map_mobile_contact',{location:currentDetail})">
+                Contact Site Team &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section id="cta">
+    <div class="cta-inner">
+      <div class="eyebrow" style="justify-content:center;color:var(--c-pale);background:rgba(183,228,199,.12);border-color:rgba(183,228,199,.25)">Get Involved</div>
+      <h2 class="h2 rv" style="color:var(--c-white)">Join the<br /><span style="color:var(--c-pale)">Conservation Movement</span></h2>
+      <p class="lead rv" style="color:rgba(255,255,255,.62);margin:.8rem auto 2.5rem">
+        Partner with FINCAPES to protect Indonesia's forests and build climate resilience.
+        Whether you're a funder, researcher, or community organization — there's a role for you.
+      </p>
+      <div class="cta-btns rv">
+        <a href="mailto:fincapes@uwaterloo.ca" class="btn btn-white"><i class="fa-solid fa-envelope"></i> &nbsp;Contact Us</a>
+        <a href="repository.html" class="btn btn-outline"><i class="fa-solid fa-folder-open"></i> &nbsp;Access Resources</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <img class="logo-img" src="https://fincapesproject.com/images/logo/logo-fincapes.png" alt="FINCAPES" />
+          </div>
+          <p>Flood Impacts, Carbon Pricing &amp; Ecosystem Sustainability — building resilient landscapes in Indonesia since 2020.</p>
+          <div class="footer-socials">
+            <a class="soc"><i class="fa-brands fa-x-twitter"></i></a>
+            <a class="soc"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a class="soc"><i class="fa-brands fa-youtube"></i></a>
+            <a class="soc"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Explore</h5>
+          <a href="about.html">About FINCAPES</a>
+          <a href="impact.html">Our Impact</a>
+          <a href="where-we-work.html">Project Map</a>
+          <a href="repository.html">Knowledge Repository</a>
+          <a href="news.html">News &amp; Updates</a>
+        </div>
+        <div class="footer-col">
+          <h5>Provinces</h5>
+          <a href="where-we-work.html">Jambi</a>
+          <a href="where-we-work.html">Kalimantan</a>
+          <a href="where-we-work.html">Lampung</a>
+          <a href="where-we-work.html">All Locations</a>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <a href="mailto:fincapes@uwaterloo.ca">fincapes@uwaterloo.ca</a>
+          <a href="https://fincapesproject.com">www.fincapesproject.com</a>
+          <a href="#">University of Waterloo</a>
+          <a href="#">200 University Ave W,<br />Waterloo, ON, Canada</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 FINCAPES Project · University of Waterloo. All rights reserved.</p>
+        <p><i class="fa-solid fa-graduation-cap" style="color:var(--c-sage)"></i> A University of Waterloo Research Initiative</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="../repo.js"></script>
+  <script src="../map.js"></script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Focus Areas — FINCAPES</title>
+  <meta name="description" content="FINCAPES three thematic pillars: Flood Risk Governance, Nature-based Solutions, and Climate Finance & Policy." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXX');
+    function gaEvent(name, params) { gtag('event', name, params || {}); }
+  </script>
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body class="page">
+
+  <header id="header">
+    <div class="topbar">
+      <span><i class="fa-solid fa-leaf"></i> &nbsp;FINCAPES — Flood Impacts, Carbon Pricing &amp; Ecosystem Sustainability</span>
+      <div class="topbar-right">
+        <a href="mailto:fincapes@uwaterloo.ca">fincapes@uwaterloo.ca</a>
+        <a href="https://fincapesproject.com">www.fincapesproject.com</a>
+      </div>
+    </div>
+    <div class="navbar">
+      <div class="nav-logo">
+        <a href="../index.html"><img class="nav-logo-img" src="https://fincapesproject.com/images/logo/logo-fincapes.png" alt="FINCAPES" /></a>
+      </div>
+      <ul class="nav-menu">
+        <li><a class="nav-link" href="../index.html">Home</a></li>
+        <li><a class="nav-link" href="about.html">About</a></li>
+        <li><a class="nav-link active" href="focus.html">Focus</a></li>
+        <li><a class="nav-link" href="impact.html">Impact</a></li>
+        <li><a class="nav-link" href="where-we-work.html">Where We Work</a></li>
+        <li><a class="nav-link" href="repository.html">Repository</a></li>
+        <li><a class="nav-link" href="news.html">News</a></li>
+        <li><a class="nav-link" href="partners.html">Partners</a></li>
+      </ul>
+      <a href="mailto:fincapes@uwaterloo.ca" class="nav-cta">Get Involved</a>
+      <div class="nav-ham" id="navHam" onclick="toggleMobileNav()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="nav-mobile" id="navMobile">
+      <ul class="nav-mobile-list">
+        <li><a href="../index.html" onclick="closeMobileNav()">Home</a></li>
+        <li><a href="about.html" onclick="closeMobileNav()">About</a></li>
+        <li><a href="focus.html" onclick="closeMobileNav()">Focus</a></li>
+        <li><a href="impact.html" onclick="closeMobileNav()">Impact</a></li>
+        <li><a href="where-we-work.html" onclick="closeMobileNav()">Where We Work</a></li>
+        <li><a href="repository.html" onclick="closeMobileNav()">Repository</a></li>
+        <li><a href="news.html" onclick="closeMobileNav()">News</a></li>
+        <li><a href="partners.html" onclick="closeMobileNav()">Partners</a></li>
+      </ul>
+      <a href="mailto:fincapes@uwaterloo.ca" class="nav-mobile-cta" onclick="closeMobileNav()">Get Involved</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="focus" class="pt-page">
+      <div class="wrap">
+        <div class="focus-header rv">
+          <div class="eyebrow" style="justify-content:center">FINCAPES Focus Areas</div>
+          <h2 class="h2" style="color:var(--c-forest)">Three Thematic <span style="color:var(--c-mid)">Pillars</span></h2>
+          <p class="lead" style="max-width:60ch;margin:.8rem auto 0;text-align:center">
+            Coordinated action across flood risk governance, nature-based solutions, and climate finance to build lasting ecosystem resilience in Indonesia.
+          </p>
+        </div>
+        <div class="focus-grid">
+
+          <div class="focus-card rv d1">
+            <div class="fc-icon"><i class="fa-solid fa-water"></i></div>
+            <h3 class="fc-title">Flood Risk Governance</h3>
+            <p class="fc-context">Strengthening multi-level governance frameworks and institutional capacity for flood risk management across Jambi, East Kalimantan, and Lampung river basins.</p>
+            <ul class="fc-outputs">
+              <li>Flood vulnerability mapping &amp; early warning systems</li>
+              <li>River basin assessment across 38 watersheds</li>
+              <li>Community-level flood resilience plans</li>
+              <li>Policy briefs on integrated water resource management</li>
+            </ul>
+            <div class="fc-footer">
+              <a href="repository.html" class="btn btn-green fc-btn" onclick="gaEvent('focus_cta',{component:'1100',action:'knowledge'})">
+                <i class="fa-solid fa-folder-open"></i> Knowledge Products
+              </a>
+              <a href="where-we-work.html" class="btn fc-btn fc-ext" onclick="gaEvent('focus_cta',{component:'1100',action:'map'})">
+                <i class="fa-solid fa-map-location-dot"></i> View on Map
+              </a>
+            </div>
+          </div>
+
+          <div class="focus-card rv d2">
+            <div class="fc-icon c12"><i class="fa-solid fa-seedling"></i></div>
+            <h3 class="fc-title">Nature-based Solutions</h3>
+            <p class="fc-context">Implementing gender-responsive peatland and mangrove restoration programs that integrate biodiversity conservation with community livelihoods across three provinces.</p>
+            <ul class="fc-outputs">
+              <li>Peatland restoration across 180,000+ hectares</li>
+              <li>Mangrove rehabilitation in coastal Lampung</li>
+              <li>Gender-inclusive community conservation co-design</li>
+              <li>Biodiversity corridor management plans</li>
+            </ul>
+            <div class="fc-footer">
+              <a href="repository.html" class="btn btn-green fc-btn" onclick="gaEvent('focus_cta',{component:'1200',action:'knowledge'})">
+                <i class="fa-solid fa-folder-open"></i> Knowledge Products
+              </a>
+              <a href="https://i-can.or.id" target="_blank" rel="noopener" class="btn fc-btn fc-ext" onclick="gaEvent('focus_cta',{component:'1200',action:'ican'})">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> I-CAN Platform
+              </a>
+            </div>
+          </div>
+
+          <div class="focus-card rv d3">
+            <div class="fc-icon c13"><i class="fa-solid fa-coins"></i></div>
+            <h3 class="fc-title">Climate Finance &amp; Policy</h3>
+            <p class="fc-context">Developing REDD+, voluntary carbon market, and green finance instruments to mobilize sustainable funding for ecosystem conservation and climate policy commitments.</p>
+            <ul class="fc-outputs">
+              <li>REDD+ carbon credit frameworks (1.4 Mt CO&#x2082; verified)</li>
+              <li>Green bond &amp; blended finance instruments</li>
+              <li>Policy dialogue with KLHK &amp; sub-national governments</li>
+              <li>Capacity-building for climate finance institutions</li>
+            </ul>
+            <div class="fc-footer">
+              <a href="repository.html" class="btn btn-green fc-btn" onclick="gaEvent('focus_cta',{component:'1300',action:'knowledge'})">
+                <i class="fa-solid fa-folder-open"></i> Knowledge Products
+              </a>
+              <a href="https://reclicks.id" target="_blank" rel="noopener" class="btn fc-btn fc-ext" onclick="gaEvent('focus_cta',{component:'1300',action:'reclicks'})">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> RECLICKS Platform
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section id="cta">
+    <div class="cta-inner">
+      <div class="eyebrow" style="justify-content:center;color:var(--c-pale);background:rgba(183,228,199,.12);border-color:rgba(183,228,199,.25)">Get Involved</div>
+      <h2 class="h2 rv" style="color:var(--c-white)">Join the<br /><span style="color:var(--c-pale)">Conservation Movement</span></h2>
+      <p class="lead rv" style="color:rgba(255,255,255,.62);margin:.8rem auto 2.5rem">
+        Partner with FINCAPES to protect Indonesia's forests and build climate resilience.
+        Whether you're a funder, researcher, or community organization — there's a role for you.
+      </p>
+      <div class="cta-btns rv">
+        <a href="mailto:fincapes@uwaterloo.ca" class="btn btn-white"><i class="fa-solid fa-envelope"></i> &nbsp;Contact Us</a>
+        <a href="repository.html" class="btn btn-outline"><i class="fa-solid fa-folder-open"></i> &nbsp;Access Resources</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <img class="logo-img" src="https://fincapesproject.com/images/logo/logo-fincapes.png" alt="FINCAPES" />
+          </div>
+          <p>Flood Impacts, Carbon Pricing &amp; Ecosystem Sustainability — building resilient landscapes in Indonesia since 2020.</p>
+          <div class="footer-socials">
+            <a class="soc"><i class="fa-brands fa-x-twitter"></i></a>
+            <a class="soc"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a class="soc"><i class="fa-brands fa-youtube"></i></a>
+            <a class="soc"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Explore</h5>
+          <a href="about.html">About FINCAPES</a>
+          <a href="impact.html">Our Impact</a>
+          <a href="where-we-work.html">Project Map</a>
+          <a href="repository.html">Knowledge Repository</a>
+          <a href="news.html">News &amp; Updates</a>
+        </div>
+        <div class="footer-col">
+          <h5>Provinces</h5>
+          <a href="where-we-work.html">Jambi</a>
+          <a href="where-we-work.html">Kalimantan</a>
+          <a href="where-we-work.html">Lampung</a>
+          <a href="where-we-work.html">All Locations</a>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <a href="mailto:fincapes@uwaterloo.ca">fincapes@uwaterloo.ca</a>
+          <a href="https://fincapesproject.com">www.fincapesproject.com</a>
+          <a href="#">University of Waterloo</a>
+          <a href="#">200 University Ave W,<br />Waterloo, ON, Canada</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 FINCAPES Project · University of Waterloo. All rights reserved.</p>
+        <p><i class="fa-solid fa-graduation-cap" style="color:var(--c-sage)"></i> A University of Waterloo Research Initiative</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../repo.js"></script>
+  <script src="../map.js"></script>
+</body>
+</html>

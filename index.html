@@ -40,18 +40,19 @@
     </div>
     <div class="navbar">
       <div class="nav-logo">
-        <img class="nav-logo-img" src="https://fincapesproject.com/images/logo/logo-fincapes.png" alt="FINCAPES" />
+        <a href="index.html"><img class="nav-logo-img" src="https://fincapesproject.com/images/logo/logo-fincapes.png" alt="FINCAPES" /></a>
       </div>
       <ul class="nav-menu">
-        <li><a class="nav-link" href="#about">About</a></li>
-        <li><a class="nav-link" href="#focus">Focus</a></li>
-        <li><a class="nav-link" href="#impact-section">Impact</a></li>
-        <li><a class="nav-link" href="#map-section">Where We Work</a></li>
-        <li><a class="nav-link" href="#repository">Repository</a></li>
-        <li><a class="nav-link" href="#news">News</a></li>
-        <li><a class="nav-link" href="#partners">Partners</a></li>
+        <li><a class="nav-link active" href="index.html">Home</a></li>
+        <li><a class="nav-link" href="pages/about.html">About</a></li>
+        <li><a class="nav-link" href="pages/focus.html">Focus</a></li>
+        <li><a class="nav-link" href="pages/impact.html">Impact</a></li>
+        <li><a class="nav-link" href="pages/where-we-work.html">Where We Work</a></li>
+        <li><a class="nav-link" href="pages/repository.html">Repository</a></li>
+        <li><a class="nav-link" href="pages/news.html">News</a></li>
+        <li><a class="nav-link" href="pages/partners.html">Partners</a></li>
       </ul>
-      <a href="#cta" class="nav-cta">Get Involved</a>
+      <a href="mailto:fincapes@uwaterloo.ca" class="nav-cta">Get Involved</a>
       <div class="nav-ham" id="navHam" onclick="toggleMobileNav()">
         <span></span><span></span><span></span>
       </div>
@@ -59,15 +60,16 @@
 
     <div class="nav-mobile" id="navMobile">
       <ul class="nav-mobile-list">
-        <li><a href="#about" onclick="closeMobileNav()">About</a></li>
-        <li><a href="#focus" onclick="closeMobileNav()">Focus</a></li>
-        <li><a href="#impact-section" onclick="closeMobileNav()">Impact</a></li>
-        <li><a href="#map-section" onclick="closeMobileNav()">Where We Work</a></li>
-        <li><a href="#repository" onclick="closeMobileNav()">Repository</a></li>
-        <li><a href="#news" onclick="closeMobileNav()">News</a></li>
-        <li><a href="#partners" onclick="closeMobileNav()">Partners</a></li>
+        <li><a href="index.html" onclick="closeMobileNav()">Home</a></li>
+        <li><a href="pages/about.html" onclick="closeMobileNav()">About</a></li>
+        <li><a href="pages/focus.html" onclick="closeMobileNav()">Focus</a></li>
+        <li><a href="pages/impact.html" onclick="closeMobileNav()">Impact</a></li>
+        <li><a href="pages/where-we-work.html" onclick="closeMobileNav()">Where We Work</a></li>
+        <li><a href="pages/repository.html" onclick="closeMobileNav()">Repository</a></li>
+        <li><a href="pages/news.html" onclick="closeMobileNav()">News</a></li>
+        <li><a href="pages/partners.html" onclick="closeMobileNav()">Partners</a></li>
       </ul>
-      <a href="#cta" class="nav-mobile-cta" onclick="closeMobileNav()">Get Involved</a>
+      <a href="mailto:fincapes@uwaterloo.ca" class="nav-mobile-cta" onclick="closeMobileNav()">Get Involved</a>
     </div>
   </header>
 
@@ -93,10 +95,10 @@
           three critical provinces of Indonesia.
         </p>
         <div class="hero-btns">
-          <a href="#map-section" class="btn btn-green" onclick="gaEvent('hero_cta_map',{button:'explore_map'})">
+          <a href="pages/where-we-work.html" class="btn btn-green" onclick="gaEvent('hero_cta_map',{button:'explore_map'})">
             <i class="fa-solid fa-map-location-dot"></i> &nbsp;Explore Project Map
           </a>
-          <a href="#repository" class="btn btn-outline" onclick="gaEvent('hero_cta_repo',{button:'view_repository'})">
+          <a href="pages/repository.html" class="btn btn-outline" onclick="gaEvent('hero_cta_repo',{button:'view_repository'})">
             <i class="fa-solid fa-folder-open"></i> &nbsp;Knowledge Repository
           </a>
         </div>
@@ -228,11 +230,11 @@
             <li>Policy briefs on integrated water resource management</li>
           </ul>
           <div class="fc-footer">
-            <a href="#repository" class="btn btn-green fc-btn"
+            <a href="pages/repository.html" class="btn btn-green fc-btn"
               onclick="gaEvent('focus_cta',{component:'1100',action:'knowledge'})">
               <i class="fa-solid fa-folder-open"></i> Knowledge Products
             </a>
-            <a href="#map-section" class="btn fc-btn fc-ext"
+            <a href="pages/where-we-work.html" class="btn fc-btn fc-ext"
               onclick="gaEvent('focus_cta',{component:'1100',action:'map'})">
               <i class="fa-solid fa-map-location-dot"></i> View on Map
             </a>
@@ -251,7 +253,7 @@
             <li>Biodiversity corridor management plans</li>
           </ul>
           <div class="fc-footer">
-            <a href="#repository" class="btn btn-green fc-btn"
+            <a href="pages/repository.html" class="btn btn-green fc-btn"
               onclick="gaEvent('focus_cta',{component:'1200',action:'knowledge'})">
               <i class="fa-solid fa-folder-open"></i> Knowledge Products
             </a>
@@ -274,7 +276,7 @@
             <li>Capacity-building for climate finance institutions</li>
           </ul>
           <div class="fc-footer">
-            <a href="#repository" class="btn btn-green fc-btn"
+            <a href="pages/repository.html" class="btn btn-green fc-btn"
               onclick="gaEvent('focus_cta',{component:'1300',action:'knowledge'})">
               <i class="fa-solid fa-folder-open"></i> Knowledge Products
             </a>
@@ -882,12 +884,13 @@
         <div class="p-badge rv d3"><i class="fa-solid fa-bolt"></i>Purnomo Yusgiantoro Center</div>
         <div class="p-badge rv d4"><i class="fa-solid fa-building-columns"></i>KLHK Indonesia</div>
         <div class="p-badge rv d1"><i class="fa-solid fa-globe"></i>Global Affairs Canada</div>
-        <div class="p-badge rv d2"><i class="fa-solid fa-leaf"></i>WWF Indonesia</div>
-        <div class="p-badge rv d3"><i class="fa-solid fa-seedling"></i>Green Climate Fund</div>
-        <div class="p-badge rv d4"><i class="fa-solid fa-microscope"></i>CIFOR-ICRAF</div>
-        <div class="p-badge rv d1"><i class="fa-solid fa-building"></i>Asian Development Bank</div>
-        <div class="p-badge rv d2"><i class="fa-solid fa-chart-simple"></i>World Resources Institute</div>
+        <div class="p-badge rv d2 p-extra"><i class="fa-solid fa-leaf"></i>WWF Indonesia</div>
+        <div class="p-badge rv d3 p-extra"><i class="fa-solid fa-seedling"></i>Green Climate Fund</div>
+        <div class="p-badge rv d4 p-extra"><i class="fa-solid fa-microscope"></i>CIFOR-ICRAF</div>
+        <div class="p-badge rv d1 p-extra"><i class="fa-solid fa-building"></i>Asian Development Bank</div>
+        <div class="p-badge rv d2 p-extra"><i class="fa-solid fa-chart-simple"></i>World Resources Institute</div>
       </div>
+      <button class="partners-more-btn" id="partnersMoreBtn" onclick="togglePartners(this)">Show More</button>
     </div>
   </section>
   <section id="cta">
@@ -904,7 +907,7 @@
       <div class="cta-btns rv">
         <a href="mailto:fincapes@uwaterloo.ca" class="btn btn-white" onclick="gaEvent('cta_contact',{})"><i
             class="fa-solid fa-envelope"></i> &nbsp;Contact Us</a>
-        <a href="#repository" class="btn btn-outline" onclick="gaEvent('cta_repository',{})"><i
+        <a href="pages/repository.html" class="btn btn-outline" onclick="gaEvent('cta_repository',{})"><i
             class="fa-solid fa-folder-open"></i> &nbsp;Access Resources</a>
       </div>
     </div>
@@ -927,11 +930,11 @@
         </div>
         <div class="footer-col">
           <h5>Explore</h5>
-          <a href="#about">About FINCAPES</a>
-          <a href="#impact-section">Our Impact</a>
-          <a href="#map-section">Project Map</a>
-          <a href="#repository">Knowledge Repository</a>
-          <a href="#news">News &amp; Updates</a>
+          <a href="pages/about.html">About FINCAPES</a>
+          <a href="pages/impact.html">Our Impact</a>
+          <a href="pages/where-we-work.html">Project Map</a>
+          <a href="pages/repository.html">Knowledge Repository</a>
+          <a href="pages/news.html">News &amp; Updates</a>
         </div>
         <div class="footer-col">
           <h5>Provinces</h5>

@@ -66,32 +66,37 @@ const mapData = [
 ];
 
 /* ─── BUILD MAP ──────────────────────────────────────────────────────── */
-const map = L.map('leaflet-map', { center: [-1, 113], zoom: 5, scrollWheelZoom: false });
-L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-    attribution: '© OpenStreetMap contributors © CARTO', maxZoom: 18
-}).addTo(map);
-
-/* Province zones */
-L.rectangle([[-3, 101], [-0.5, 104.5]], { color: '#2ecc71', weight: 2, fillOpacity: .07, dashArray: '5 4' }).addTo(map).bindTooltip('Jambi');
-L.rectangle([[-2.5, 108], [2, 119]], { color: '#f0a500', weight: 2, fillOpacity: .05, dashArray: '5 4' }).addTo(map).bindTooltip('East Kalimantan');
-L.rectangle([[-2, 107.5], [2.5, 112]], { color: '#f0a500', weight: 2, fillOpacity: .04, dashArray: '5 4' }).addTo(map).bindTooltip('West Kalimantan');
-L.rectangle([[-6, 104], [-3.5, 106.5]], { color: '#3498db', weight: 2, fillOpacity: .09, dashArray: '5 4' }).addTo(map).bindTooltip('Lampung');
-
-function mkIcon(color, faIcon) {
-    return L.divIcon({
-        html: `<div style="width:34px;height:34px;border-radius:50%;background:${color};border:2.5px solid rgba(255,255,255,.6);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 6px ${color}30,0 4px 14px rgba(0,0,0,.4);cursor:pointer"><i class="fa-solid ${faIcon}" style="color:#fff;font-size:13px;pointer-events:none"></i></div>`,
-        className: '', iconSize: [34, 34], iconAnchor: [17, 17]
-    });
-}
-
+const _mapEl = document.getElementById('leaflet-map');
+if (!_mapEl) { /* Not on the map page — skip Leaflet init */ }
+const map = _mapEl ? L.map('leaflet-map', { center: [-1, 113], zoom: 5, scrollWheelZoom: false }) : null;
 let leafletMarkers = [];
 let currentDetail = '';
-mapData.forEach(d => {
-    const mk = L.marker([d.lat, d.lng], { icon: mkIcon(d.color, d.icon) }).addTo(map);
-    mk.on('click', () => openDetail(d));
-    mk._fincData = d;
-    leafletMarkers.push(mk);
-});
+
+if (map) {
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        attribution: '© OpenStreetMap contributors © CARTO', maxZoom: 18
+    }).addTo(map);
+
+    /* Province zones */
+    L.rectangle([[-3, 101], [-0.5, 104.5]], { color: '#2ecc71', weight: 2, fillOpacity: .07, dashArray: '5 4' }).addTo(map).bindTooltip('Jambi');
+    L.rectangle([[-2.5, 108], [2, 119]], { color: '#f0a500', weight: 2, fillOpacity: .05, dashArray: '5 4' }).addTo(map).bindTooltip('East Kalimantan');
+    L.rectangle([[-2, 107.5], [2.5, 112]], { color: '#f0a500', weight: 2, fillOpacity: .04, dashArray: '5 4' }).addTo(map).bindTooltip('West Kalimantan');
+    L.rectangle([[-6, 104], [-3.5, 106.5]], { color: '#3498db', weight: 2, fillOpacity: .09, dashArray: '5 4' }).addTo(map).bindTooltip('Lampung');
+
+    function mkIcon(color, faIcon) {
+        return L.divIcon({
+            html: `<div style="width:34px;height:34px;border-radius:50%;background:${color};border:2.5px solid rgba(255,255,255,.6);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 6px ${color}30,0 4px 14px rgba(0,0,0,.4);cursor:pointer"><i class="fa-solid ${faIcon}" style="color:#fff;font-size:13px;pointer-events:none"></i></div>`,
+            className: '', iconSize: [34, 34], iconAnchor: [17, 17]
+        });
+    }
+
+    mapData.forEach(d => {
+        const mk = L.marker([d.lat, d.lng], { icon: mkIcon(d.color, d.icon) }).addTo(map);
+        mk.on('click', () => openDetail(d));
+        mk._fincData = d;
+        leafletMarkers.push(mk);
+    });
+}
 
 function openDetail(d) {
     currentDetail = d.id;
@@ -127,7 +132,7 @@ function openDetail(d) {
         document.getElementById('prov-' + d.province)?.classList.add('active');
         activateTab('provinces');
     }
-    map.flyTo([d.lat, d.lng], 7, { duration: 1.2 });
+    if (map) map.flyTo([d.lat, d.lng], 7, { duration: 1.2 });
 }
 
 function closeDetail() {
@@ -151,7 +156,7 @@ function focusProvince(p) {
     document.getElementById('prov-' + p)?.classList.add('active');
     const centres = { jambi: [-1.8, 102.5, 6], kalimantan: [.5, 114.5, 6], 'kalimantan-east': [1.0, 116.0, 6], 'kalimantan-west': [0.5, 110.5, 7], lampung: [-5, 105.2, 7] };
     const c = centres[p] || [-1, 113, 5];
-    map.flyTo([c[0], c[1]], c[2], { duration: 1.2 });
+    if (map) map.flyTo([c[0], c[1]], c[2], { duration: 1.2 });
     gaEvent('map_province_click', { province: p });
 }
 
@@ -167,7 +172,7 @@ function filterMarkers(tag, el) {
         const d = mk._fincData;
         const locMatch = tag === 'all' || d.province === tag || d.type === tag;
         const compMatch = !compChip || compChip.textContent.includes('All') || d.component === comp;
-        locMatch && compMatch ? mk.addTo(map) : map.removeLayer(mk);
+        if (map) { locMatch && compMatch ? mk.addTo(map) : map.removeLayer(mk); }
     });
     gaEvent('map_filter', { filter: tag });
 }
@@ -189,7 +194,7 @@ function filterByComponent(comp, el) {
             ? locChip.textContent.trim().toLowerCase().replace('all locations','all')
             : (locSel ? locSel.value : 'all');
         const locMatch = locTag === 'all' || d.province === locTag || d.type === locTag;
-        show && locMatch ? mk.addTo(map) : map.removeLayer(mk);
+        if (map) { show && locMatch ? mk.addTo(map) : map.removeLayer(mk); }
     });
     gaEvent('map_component_filter', { component: comp });
 }
@@ -307,6 +312,13 @@ function closeLb() {
     document.body.style.overflow = '';
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb() });
+
+/* ─── PARTNERS SHOW MORE (mobile) ───────────────────────────────────── */
+function togglePartners(btn) {
+    const grid = document.querySelector('.partners-grid');
+    const expanded = grid.classList.toggle('expanded');
+    btn.textContent = expanded ? 'Show Less' : 'Show More';
+}
 
 /* ─── GA4: DOWNLOAD ──────────────────────────────────────────────────── */
 function downloadItem(e, filename) {
