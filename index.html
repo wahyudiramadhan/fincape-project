@@ -210,16 +210,17 @@
         <div class="eyebrow" style="justify-content:center">FINCAPES Focus Areas</div>
         <h2 class="h2" style="color:var(--c-forest)">Three Thematic <span style="color:var(--c-mid)">Pillars</span></h2>
         <p class="lead" style="max-width:60ch;margin:.8rem auto 0;text-align:center">
-          Coordinated action across flood risk governance, nature-based solutions, and climate finance to build lasting ecosystem resilience in Indonesia.
+          Coordinated action across flood risk governance, nature-based solutions, and climate finance to build lasting
+          ecosystem resilience in Indonesia.
         </p>
       </div>
       <div class="focus-grid">
 
         <div class="focus-card rv d1">
-          <div class="fc-comp">Component 1100</div>
           <div class="fc-icon"><i class="fa-solid fa-water"></i></div>
           <h3 class="fc-title">Flood Risk Governance</h3>
-          <p class="fc-context">Strengthening multi-level governance frameworks and institutional capacity for flood risk management across Jambi, East Kalimantan, and Lampung river basins.</p>
+          <p class="fc-context">Strengthening multi-level governance frameworks and institutional capacity for flood
+            risk management across Jambi, East Kalimantan, and Lampung river basins.</p>
           <ul class="fc-outputs">
             <li>Flood vulnerability mapping &amp; early warning systems</li>
             <li>River basin assessment across 38 watersheds</li>
@@ -227,20 +228,22 @@
             <li>Policy briefs on integrated water resource management</li>
           </ul>
           <div class="fc-footer">
-            <a href="#repository" class="btn btn-green fc-btn" onclick="gaEvent('focus_cta',{component:'1100',action:'knowledge'})">
+            <a href="#repository" class="btn btn-green fc-btn"
+              onclick="gaEvent('focus_cta',{component:'1100',action:'knowledge'})">
               <i class="fa-solid fa-folder-open"></i> Knowledge Products
             </a>
-            <a href="#map-section" class="btn fc-btn fc-ext" onclick="gaEvent('focus_cta',{component:'1100',action:'map'})">
+            <a href="#map-section" class="btn fc-btn fc-ext"
+              onclick="gaEvent('focus_cta',{component:'1100',action:'map'})">
               <i class="fa-solid fa-map-location-dot"></i> View on Map
             </a>
           </div>
         </div>
 
         <div class="focus-card rv d2">
-          <div class="fc-comp c12">Component 1200</div>
           <div class="fc-icon c12"><i class="fa-solid fa-seedling"></i></div>
           <h3 class="fc-title">Nature-based Solutions</h3>
-          <p class="fc-context">Implementing gender-responsive peatland and mangrove restoration programs that integrate biodiversity conservation with community livelihoods across three provinces.</p>
+          <p class="fc-context">Implementing gender-responsive peatland and mangrove restoration programs that integrate
+            biodiversity conservation with community livelihoods across three provinces.</p>
           <ul class="fc-outputs">
             <li>Peatland restoration across 180,000+ hectares</li>
             <li>Mangrove rehabilitation in coastal Lampung</li>
@@ -248,20 +251,22 @@
             <li>Biodiversity corridor management plans</li>
           </ul>
           <div class="fc-footer">
-            <a href="#repository" class="btn btn-green fc-btn" onclick="gaEvent('focus_cta',{component:'1200',action:'knowledge'})">
+            <a href="#repository" class="btn btn-green fc-btn"
+              onclick="gaEvent('focus_cta',{component:'1200',action:'knowledge'})">
               <i class="fa-solid fa-folder-open"></i> Knowledge Products
             </a>
-            <a href="https://i-can.or.id" target="_blank" rel="noopener" class="btn fc-btn fc-ext" onclick="gaEvent('focus_cta',{component:'1200',action:'ican'})">
+            <a href="https://i-can.or.id" target="_blank" rel="noopener" class="btn fc-btn fc-ext"
+              onclick="gaEvent('focus_cta',{component:'1200',action:'ican'})">
               <i class="fa-solid fa-arrow-up-right-from-square"></i> I-CAN Platform
             </a>
           </div>
         </div>
 
         <div class="focus-card rv d3">
-          <div class="fc-comp c13">Component 1300</div>
           <div class="fc-icon c13"><i class="fa-solid fa-coins"></i></div>
           <h3 class="fc-title">Climate Finance &amp; Policy</h3>
-          <p class="fc-context">Developing REDD+, voluntary carbon market, and green finance instruments to mobilize sustainable funding for ecosystem conservation and climate policy commitments.</p>
+          <p class="fc-context">Developing REDD+, voluntary carbon market, and green finance instruments to mobilize
+            sustainable funding for ecosystem conservation and climate policy commitments.</p>
           <ul class="fc-outputs">
             <li>REDD+ carbon credit frameworks (1.4 Mt CO&#x2082; verified)</li>
             <li>Green bond &amp; blended finance instruments</li>
@@ -269,10 +274,12 @@
             <li>Capacity-building for climate finance institutions</li>
           </ul>
           <div class="fc-footer">
-            <a href="#repository" class="btn btn-green fc-btn" onclick="gaEvent('focus_cta',{component:'1300',action:'knowledge'})">
+            <a href="#repository" class="btn btn-green fc-btn"
+              onclick="gaEvent('focus_cta',{component:'1300',action:'knowledge'})">
               <i class="fa-solid fa-folder-open"></i> Knowledge Products
             </a>
-            <a href="https://reclicks.id" target="_blank" rel="noopener" class="btn fc-btn fc-ext" onclick="gaEvent('focus_cta',{component:'1300',action:'reclicks'})">
+            <a href="https://reclicks.id" target="_blank" rel="noopener" class="btn fc-btn fc-ext"
+              onclick="gaEvent('focus_cta',{component:'1300',action:'reclicks'})">
               <i class="fa-solid fa-arrow-up-right-from-square"></i> RECLICKS Platform
             </a>
           </div>
@@ -817,120 +824,9 @@
 
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="./map.js"></script>
-
-  <script>
-    const navHam = document.getElementById('navHam');
-    const navMobile = document.getElementById('navMobile');
-
-    function toggleMobileNav() {
-      const isOpen = navMobile.classList.toggle('open');
-      navHam.classList.toggle('open', isOpen);
-      document.body.style.overflow = isOpen ? 'hidden' : '';
-    }
-
-    function closeMobileNav() {
-      navMobile.classList.remove('open');
-      navHam.classList.remove('open');
-      document.body.style.overflow = '';
-    }
-
-    // Close on outside click
-    document.addEventListener('click', function (e) {
-      if (navMobile.classList.contains('open') &&
-          !navMobile.contains(e.target) &&
-          !navHam.contains(e.target)) {
-        closeMobileNav();
-      }
-    });
-
-    // Close on resize back to desktop
-    window.addEventListener('resize', function () {
-      if (window.innerWidth > 768) closeMobileNav();
-    });
-  </script>
-
-  <script>
-    (function () {
-      const canvas = document.getElementById('heroParticles');
-      const ctx = canvas.getContext('2d');
-      const hero = document.getElementById('hero');
-      let W, H, particles = [];
-
-      const COLORS = ['#52b788', '#74c69d', '#b7e4c7', '#d8f3dc'];
-      const COUNT = 35;
-
-      function resize() {
-        W = canvas.width = hero.offsetWidth;
-        H = canvas.height = hero.offsetHeight;
-      }
-
-      function randomBetween(a, b) { return a + Math.random() * (b - a); }
-
-      function createParticle(fromBottom) {
-        return {
-          x: randomBetween(0, W),
-          y: fromBottom ? H + randomBetween(5, 20) : randomBetween(0, H),
-          r: randomBetween(2, 5),
-          vy: randomBetween(0.2, 0.6),
-          vx: randomBetween(-0.15, 0.15),
-          alpha: randomBetween(0.4, 0.75),
-          color: COLORS[Math.floor(Math.random() * COLORS.length)],
-          pulse: randomBetween(0, Math.PI * 2),
-          pulseSpeed: randomBetween(0.005, 0.015),
-          driftPhase: randomBetween(0, Math.PI * 2),
-          driftSpeed: randomBetween(0.003, 0.008),
-          driftAmp: randomBetween(0.3, 0.7)
-        };
-      }
-
-      function init() {
-        particles = [];
-        for (let i = 0; i < COUNT; i++) particles.push(createParticle(false));
-      }
-
-      function hexToRgb(hex) {
-        const r = parseInt(hex.slice(1, 3), 16);
-        const g = parseInt(hex.slice(3, 5), 16);
-        const b = parseInt(hex.slice(5, 7), 16);
-        return `${r},${g},${b}`;
-      }
-
-      function draw() {
-        ctx.clearRect(0, 0, W, H);
-        particles.forEach(p => {
-          p.pulse += p.pulseSpeed;
-          p.driftPhase += p.driftSpeed;
-
-          const pulseFade = 0.8 + 0.2 * Math.sin(p.pulse);
-          const a = p.alpha * pulseFade;
-
-          const glowR = p.r * 8;
-          const rgb = hexToRgb(p.color);
-          const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, glowR);
-          grad.addColorStop(0,   `rgba(${rgb},${a})`);
-          grad.addColorStop(0.3, `rgba(${rgb},${(a * 0.4).toFixed(3)})`);
-          grad.addColorStop(1,   `rgba(${rgb},0)`);
-
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, glowR, 0, Math.PI * 2);
-          ctx.fillStyle = grad;
-          ctx.fill();
-
-          p.y -= p.vy;
-          p.x += p.vx + Math.sin(p.driftPhase) * p.driftAmp;
-
-          if (p.y < -10) Object.assign(p, createParticle(true));
-        });
-        requestAnimationFrame(draw);
-      }
-
-      window.addEventListener('resize', () => { resize(); init(); });
-      resize();
-      init();
-      draw();
-    })();
-  </script>
+  <script src="./map.js" />
+  <script src="./repo.js" />
+  <script src="./main.js" />
 </body>
 
 </html>
